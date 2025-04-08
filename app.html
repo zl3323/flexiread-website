@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TextTune for ESL - Adjust Your Text</title>
+    <title>FlexiRead for ESL - Adjust Your Text</title>
     <style>
         :root {
             --primary-color: #4361ee;
@@ -388,7 +388,7 @@
     <nav class="navbar">
         <div class="container navbar-container">
             <a href="index.html" class="logo">
-                <span class="logo-icon">📚</span>TextTune
+                <span class="logo-icon">📚</span>FlexiRead
             </a>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Home</a>
@@ -402,7 +402,7 @@
 
     <div class="container">
         <div class="app-header">
-            <h1>TextTune for ESL</h1>
+            <h1>FlexiRead for ESL</h1>
             <p>Adjust text to your English proficiency level for better learning</p>
         </div>
 
@@ -513,7 +513,7 @@
         </main>
 
         <footer>
-            <p>&copy; 2025 TextTune for ESL | <a href="index.html">Home</a> | <a href="mailto:contact@texttune.example">Contact Us</a></p>
+            <p>&copy; 2025 FlexiRead for ESL | <a href="index.html">Home</a> | <a href="mailto:contact@FlexiRead.example">Contact Us</a></p>
         </footer>
     </div>
 
@@ -524,14 +524,14 @@
         }
 
         // Store the user ID in localStorage or create a new one
-        let userId = localStorage.getItem('textTuneUserId');
+        let userId = localStorage.getItem('FlexiReadUserId');
         if (!userId) {
             userId = generateUserId();
-            localStorage.setItem('textTuneUserId', userId);
+            localStorage.setItem('FlexiReadUserId', userId);
         }
 
         // Store the last selected CEFR level
-        let lastSelectedLevel = localStorage.getItem('textTuneCefrLevel');
+        let lastSelectedLevel = localStorage.getItem('FlexiReadCefrLevel');
         if (lastSelectedLevel) {
             document.getElementById('cefr-level').value = lastSelectedLevel;
         }
@@ -555,7 +555,7 @@
             if (selectedLevel && cefrDescriptions[selectedLevel]) {
                 levelInfo.textContent = cefrDescriptions[selectedLevel];
                 levelInfo.style.display = 'block';
-                localStorage.setItem('textTuneCefrLevel', selectedLevel);
+                localStorage.setItem('FlexiReadCefrLevel', selectedLevel);
             } else {
                 levelInfo.style.display = 'none';
             }
