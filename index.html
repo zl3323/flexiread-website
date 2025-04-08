@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlexiRead for ESL - Elevate Your English Learning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #558cff;
+      --primary-dark: #4361ee;
+      --primary-gradient: linear-gradient(180deg, #e4edfc 0%, #f0f6ff 40%, #ffffff 100%);
+      --secondary-color: #8fb5f1;
+      --highlight-color: #5d8ef7;
+      --background-color: #f8fcff;
+      --text-color: #1e1e2f;
+      --subtle-text: #6c757d;
+      --border-radius: 16px;
+      --box-shadow: 0 8px 20px rgba(67, 97, 238, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    nav.navbar {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: transparent;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: var(--transition);
+    }
+
+    nav.navbar:hover {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      padding: 10px 0;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-link.cta {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: var(--border-radius);
+    }
+
+    .nav-link.cta:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .hero {
+      padding: 140px 0 100px;
+      background: var(--primary-gradient);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--subtle-text);
+      max-width: 720px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-btn {
+      background: white;
+      color: var(--primary-color);
+      padding: 14px 36px;
+      font-weight: 700;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-4px);
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    section {
+      padding: 100px 0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    section.reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 3.0rem;
+      font-weight: 700;
+    }
+
+    .section-title p {
+      color: var(--subtle-text);
+      max-width: 600px;
+      margin: 10px auto 0;
+    }
+
+    .feature-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      margin-bottom: 80px;
+      flex-wrap: wrap;
+    }
+
+    .feature-block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .feature-text {
+      flex: 1;
+    }
+
+    .feature-badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--highlight-color);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .feature-description {
+      color: var(--subtle-text);
+      font-size: 1.1rem;
+      max-width: 500px;
+    }
+
+    .feature-image {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      height: auto;
+      box-shadow: var(--box-shadow);
+      border-radius: var(--border-radius);
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border: 1px solid #dee2e6;
+      border-radius: var(--border-radius);
+      margin-bottom: 20px;
+      transition: var(--transition);
+      background-color: white;
+      box-shadow: var(--box-shadow);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 24px 32px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+      color: var(--text-color);
+    }
+
+    .faq-icon {
+      font-size: 1.2rem;
+      color: #adb5bd;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item:hover .faq-icon {
+      transform: rotate(180deg);
+      color: var(--primary-color);
+    }
+
+    .faq-item:hover .faq-question {
+      background-color: #f1f3f5;
+    }
+
+    .faq-answer {
+      padding: 0 32px;
+      font-size: 1rem;
+      color: var(--subtle-text);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .faq-item:hover .faq-answer {
+      max-height: 500px;
+      padding: 20px 32px 32px;
+      background-color: #f8f9fa;
+    }
+
+    .blog-grid {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .blog-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .blog-content {
+      padding: 24px;
+    }
+
+    .blog-meta {
+      font-size: 0.9rem;
+      color: var(--subtle-text);
+      margin-bottom: 12px;
+    }
+
+    .blog-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .blog-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #f1f3f5;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .footer-column h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--subtle-text);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--subtle-text);
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .feature-block {
+        flex-direction: column !important;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    .text-glow {
+      background: linear-gradient(270deg, #558cff, #8fb5f1, #5d8ef7, #558cff);
+      background-size: 800% 800%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      animation: glow-move 6s ease infinite;
+      display: inline-block;
+    }
+
+    @keyframes glow-move {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo">
+        <img src=src="logo-flexiread.png" alt="FlexiRead Logo" class="logo-img">
+      </a>
+      <div class="nav-links">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#blog" class="nav-link">Blog</a>
+        <a href="app.html" class="nav-link cta">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>
+        Elevate Your English Learning Experience with
+        <span class="text-glow">FlexiRead</span>
+      </h1>
+      <p>Customize text difficulty to match your evolving language skills with zero technical knowledge needed. Reimagine ESL education through dynamic interactions between learners, AI technology, and precisely calibrated content that challenges you at the perfect level.</p>
+      <a href="app.html" class="hero-btn">Try FlexiRead Now</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Choose FlexiRead</h2>
+        <p>FlexiRead makes English content accessible at your learning level</p>
+      </div>
+
+      <div class="feature-block">
+        <div class="feature-text">
+          <div class="feature-badge">Feature</div>
+          <div class="feature-title">Personalized Learning</div>
+          <div class="feature-description">
+            Content adjusted to be slightly above your CEFR level creates the optimal learning challenge, based on proven language acquisition research.
+          </div>
+        </div>
+        <img src='https://images.unsplash.com/photo-1581090700227-1e37b190418e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDQxMzkxNTB8&ixlib=rb-4.0.3&q=85' alt="Feature illustration 3" class="feature-image">
+      </div>
+
+      <div class="feature-block">
+        <div class="feature-text">
+          <div class="feature-badge">Feature</div>
+          <div class="feature-title">Real-World Content</div>
+          <div class="feature-description">
+            Use authentic articles, news, and websites instead of simplified textbook content. Learn from material you're actually interested in.
+          </div>
+        </div>
+        <img src='https://images.unsplash.com/photo-1581090700227-1e37b190418e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDQxMzkxNTB8&ixlib=rb-4.0.3&q=85' alt="Feature illustration 3" class="feature-image">
+      </div>
+
+      <div class="feature-block">
+        <div class="feature-text">
+          <div class="feature-badge">Feature</div>
+          <div class="feature-title">Instant Adjustment</div>
+          <div class="feature-description">
+            Paste any text or URL and get results in seconds. Compare the original with the adjusted version to see what's changed.
+          </div>
+        </div>
+        <img src='https://images.unsplash.com/photo-1581090700227-1e37b190418e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NDQxMzkxNTB8&ixlib=rb-4.0.3&q=85' alt="Feature illustration 3" class="feature-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Get answers to common questions about FlexiRead</p>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            What is the CEFR standard?
+            <span class="faq-icon">&#8675</span>
+          </div>
+          <div class="faq-answer">
+            <p>The Common European Framework of Reference for Languages (CEFR) is an international standard for describing language ability on a six-point scale: A1 (Beginner), A2 (Elementary), B1 (Intermediate), B2 (Upper Intermediate), C1 (Advanced), and C2 (Proficient).</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            How does FlexiRead modify text?
+            <span class="faq-icon">&#8675</span>
+          </div>
+          <div class="faq-answer">
+            <p>FlexiRead adjusts content to be slightly above your selected CEFR level by:</p>
+            <ul>
+              <li>Simplifying or replacing complex vocabulary while preserving key terms</li>
+              <li>Restructuring complex sentences into more digestible forms</li>
+              <li>Maintaining the original meaning and important information</li>
+              <li>Introducing a controlled amount of new vocabulary appropriate for your level</li>
+            </ul>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            How can I best use FlexiRead for learning?
+            <span class="faq-icon">&#8675</span>
+          </div>
+          <div class="faq-answer">
+            <p>For maximum learning benefits:</p>
+            <ul>
+              <li>Use authentic materials that interest you</li>
+              <li>Compare original and adjusted versions to see the differences</li>
+              <li>Focus on new vocabulary in the adjusted text</li>
+              <li>Gradually increase your CEFR level as you improve</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="blog">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Blogs</h2>
+        <p>Learn our Integrative Project journey</p>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1373&q=80');"></div>
+          <div class="blog-content">
+            <h3>Understanding CEFR Levels in ESL Learning</h3>
+            <div class="blog-meta">📅 March 15, 2025</div>
+            <p class="blog-excerpt">A comprehensive guide to CEFR levels and how they impact your English learning journey. Learn how to assess your current level and set achievable goals.</p>
+            <a href="blog1.html" class="blog-link">Read More →</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
+          <div class="blog-content">
+            <h3>Effective Reading Strategies for ESL Students</h3>
+            <div class="blog-meta">📅 March 28, 2025</div>
+            <p class="blog-excerpt">Discover proven techniques to improve your reading comprehension and vocabulary retention. Learn how to approach challenging texts strategically.</p>
+            <a href="blog2.html" class="blog-link">Read More →</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1519791883288-dc8bd696e667?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
+          <div class="blog-content">
+            <h3>AI Tools for Language Learners: Beyond FlexiRead</h3>
+            <div class="blog-meta">📅 April 5, 2025</div>
+            <p class="blog-excerpt">Explore how AI is revolutionizing language learning. This article covers the most innovative tools and how to incorporate them into your study routine.</p>
+            <a href="blog3.html" class="blog-link">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 页尾 Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>FlexiRead</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#blog">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Get Started</h3>
+          <ul class="footer-links">
+            <li><a href="app.html">Try the App</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 FlexiRead for ESL. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+
+</html>
