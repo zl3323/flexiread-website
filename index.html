@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FlexiRead - Empower Your Reading Experience</title>
+  <style>
+    :root {
+      /* 主要色系 */
+      --primary-color: #4361ee;
+      --secondary-color: #48bfe3;
+      --primary-light: #7296f8;
+
+      /* 背景、文字与其他 */
+      --background-color: #f8f9fa;
+      --text-color: #212529;
+      --light-gray: #e9ecef;
+      --medium-gray: #ced4da;
+      --dark-gray: #6c757d;
+      --error-color: #e74c3c;
+      
+      /* 其他通用 */
+      --border-radius: 12px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+      --max-content-width: 1100px;
+      
+      /* Hero区渐变色 */
+      --hero-gradient-start: #4361ee;
+      --hero-gradient-end: #48bfe3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      color: var(--text-color);
+      background-color: var(--background-color);
+      line-height: 1.6;
+    }
+
+    /********************************************
+     *               导航栏 (Sticky)
+     ********************************************/
+    .navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: var(--box-shadow);
+      z-index: 999; 
+    }
+    .nav-container {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    .navbar li a {
+      text-decoration: none;
+      color: var(--dark-gray);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .navbar li a:hover {
+      color: var(--primary-color);
+    }
+
+    /********************************************
+     *               HERO区
+     ********************************************/
+    .hero {
+      background: linear-gradient(
+        135deg,
+        var(--hero-gradient-start) 0%,
+        var(--hero-gradient-end) 100%
+      );
+      color: #ffffff;
+      padding: 80px 20px;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .hero-content {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+    }
+    .hero button {
+      background-color: #ffffff;
+      color: var(--primary-color);
+      border: none;
+      border-radius: 30px;
+      padding: 14px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .hero button:hover {
+      background-color: var(--light-gray);
+      transform: translateY(-2px);
+    }
+
+    /********************************************
+     *          Features区 (图文介绍)
+     ********************************************/
+    .features-section {
+      max-width: var(--max-content-width);
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .feature-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 50px;
+      gap: 30px;
+    }
+    .feature-text {
+      flex: 1 1 500px;
+      min-width: 300px;
+    }
+    .feature-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+    .feature-text p {
+      font-size: 1rem;
+      color: var(--dark-gray);
+      line-height: 1.5;
+    }
+    .feature-img {
+      flex: 1 1 400px;
+      min-width: 280px;
+      display: flex;
+      justify-content: center;
+    }
+    .feature-img img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+    /* 让第二个Features左右对调(可选) */
+    .feature-item:nth-child(even) .feature-text {
+      order: 2;
+    }
+
+    /********************************************
+     *          文本输入区 (替代 app.html)
+     *          通过 Start 按钮或菜单可滚动到此
+     ********************************************/
+    .input-section-container {
+      max-width: var(--max-content-width);
+      margin: 60px auto;
+      padding: 20px;
+    }
+    .input-section {
+      background-color: #fff;
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 30px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+    select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--medium-gray);
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    select:hover, select:focus,
+    textarea:hover, textarea:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+    textarea {
+      min-height: 200px;
+      resize: vertical;
+    }
+    .level-info {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: var(--light-gray);
+      border-radius: var(--border-radius);
+      font-size: 0.9rem;
+    }
+    .error-message {
+      display: none;
+      color: var(--error-color);
+      background-color: rgba(231, 76, 60, 0.1);
+      padding: 10px 15px;
+      border-radius: var(--border-radius);
+      margin: 15px 0;
+      text-align: center;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    button {
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: var(--border-radius);
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    button:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+    button:disabled {
+      background-color: var(--medium-gray);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Loading */
+    .loading {
+      display: none;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-top: 4px solid var(--primary-color);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 15px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* 结果展示 */
+    .results-section {
+      display: none;
+      background-color: #fff;
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 30px;
+    }
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .results-header h2 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      margin: 0;
+    }
+    .comparison-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: var(--dark-gray);
+      font-size: 0.95rem;
+    }
+    .comparison-toggle input {
+      margin-right: 8px;
+    }
+    .results-content {
+      padding: 20px;
+      background-color: var(--light-gray);
+      border-radius: var(--border-radius);
+      white-space: pre-wrap;
+    }
+    .comparison-view {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .original-text, .adjusted-text {
+      padding: 20px;
+      background-color: var(--light-gray);
+      border-radius: var(--border-radius);
+      white-space: pre-wrap;
+    }
+    .original-text h3, .adjusted-text h3 {
+      margin-bottom: 10px;
+      color: var(--dark-gray);
+    }
+    .adjusted-text {
+      background-color: rgba(67, 97, 238, 0.08);
+    }
+
+    /********************************************
+     *               FAQ区
+     ********************************************/
+    .faq-section {
+      max-width: var(--max-content-width);
+      margin: 0 auto 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+    .faq-section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+    .faq-item {
+      border: 1px solid var(--light-gray);
+      border-radius: var(--border-radius);
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .faq-question {
+      background-color: var(--light-gray);
+      padding: 15px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question:hover {
+      background-color: #e2e6ea;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+    }
+    .faq-item.active .faq-question::after {
+      content: '-';
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 20px;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 15px 20px;
+    }
+
+    /********************************************
+     *               Footer
+     ********************************************/
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #fff;
+      color: var(--dark-gray);
+    }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .feature-item {
+        flex-direction: column;
+        text-align: center;
+      }
+      .feature-item:nth-child(even) .feature-text {
+        order: 0;
+      }
+      .comparison-view {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">FlexiRead</a>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <!-- 让“Start”滚动到文本输入区 -->
+        <li><a href="#input-section">Start</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero区 -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Empower Your Reading</h1>
+      <p>
+        FlexiRead helps you adapt complex texts to your English level.  
+        Make reading engaging, effective, and tailored—one click away.
+      </p>
+      <!-- 点击后滚动到输入区 -->
+      <button onclick="document.getElementById('input-section').scrollIntoView({ behavior: 'smooth' })">
+        Get Started
+      </button>
+    </div>
+  </section>
+
+  <!-- Features区 -->
+  <div class="features-section" id="features">
+    <div class="feature-item">
+      <div class="feature-text">
+        <h2>Adaptive Simplification</h2>
+        <p>
+          Automatically simplify or enrich content based on your skill level.
+          No more frustration or boredom. Keep it just right.
+        </p>
+      </div>
+      <div class="feature-img">
+        <img src="https://via.placeholder.com/400x300.png?text=Feature+1" alt="Feature 1"/>
+      </div>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-text">
+        <h2>Smart Vocabulary</h2>
+        <p>
+          Learn new words in context. FlexiRead highlights key vocabulary for
+          deeper understanding and better retention.
+        </p>
+      </div>
+      <div class="feature-img">
+        <img src="https://via.placeholder.com/400x300.png?text=Feature+2" alt="Feature 2"/>
+      </div>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-text">
+        <h2>Instant Feedback</h2>
+        <p>
+          Compare original and adjusted texts side by side. Track your progress
+          with real-time adjustments and accurate CEFR leveling.
+        </p>
+      </div>
+      <div class="feature-img">
+        <img src="https://via.placeholder.com/400x300.png?text=Feature+3" alt="Feature 3"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- 文本输入 + 结果展示区 (原 app.html 的功能) -->
+  <div class="input-section-container" id="input-section">
+    <h2 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">FlexiRead Text Adjuster</h2>
+
+    <section class="input-section">
+      <div class="form-group">
+        <label for="cefr-level">Select your current CEFR level:</label>
+        <select id="cefr-level">
+          <option value="" disabled selected>Choose your level</option>
+          <option value="A1">A1 - Beginner</option>
+          <option value="A2">A2 - Elementary</option>
+          <option value="B1">B1 - Intermediate</option>
+          <option value="B2">B2 - Upper Intermediate</option>
+          <option value="C1">C1 - Advanced</option>
+          <option value="C2">C2 - Proficient</option>
+        </select>
+        <div id="level-info" class="level-info"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="input-text">Enter text or URL:</label>
+        <textarea id="input-text" placeholder="Paste your text or enter a URL here..."></textarea>
+      </div>
+
+      <div class="error-message" id="error-message"></div>
+
+      <div class="button-container">
+        <button id="process-button">Process Text</button>
+      </div>
+    </section>
+
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Processing your text...</p>
+    </div>
+
+    <section class="results-section" id="results-section">
+      <div class="results-header">
+        <h2>Adjusted Text</h2>
+        <label class="comparison-toggle">
+          <input type="checkbox" id="comparison-toggle" />
+          Show comparison
+        </label>
+      </div>
+
+      <div class="results-content" id="results-content"></div>
+
+      <div class="comparison-view" id="comparison-view">
+        <div class="original-text">
+          <h3>Original Text</h3>
+          <div id="original-content"></div>
+        </div>
+        <div class="adjusted-text">
+          <h3>Adjusted Text</h3>
+          <div id="adjusted-content"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FAQ区 -->
+  <section class="faq-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question">How does FlexiRead adjust my text?</div>
+      <div class="faq-answer">
+        <p>
+          We use advanced language models through Dify.ai to analyze vocabulary,
+          structure, and difficulty. The text is modified or enriched to match
+          your reading level while preserving the core meaning.
+        </p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I see the original text?</div>
+      <div class="faq-answer">
+        <p>Yes! Toggle “Show comparison” to see the original side by side.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Is this only for ESL learners?</div>
+      <div class="faq-answer">
+        <p>
+          Not just ESL. It's useful for anyone seeking simplified or more 
+          advanced reading – from students to researchers wanting concise texts.
+        </p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Is it free?</div>
+      <div class="faq-answer">
+        <p>
+          Currently, yes. We may add advanced plans later, but a free tier 
+          will remain available for essential usage.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <p>&copy; 2025 FlexiRead | <a href="mailto:contact@flexiread.example">Contact Us</a></p>
+  </footer>
+
+  <!-- JS脚本区：实际调用API + FAQ折叠 + 等级说明 + 对比切换等 -->
+  <script>
+    /************************************************************
+     *                 FAQ 折叠功能
+     ************************************************************/
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach(item => {
+      const question = item.querySelector(".faq-question");
+      question.addEventListener("click", () => {
+        item.classList.toggle("active");
+      });
+    });
+
+    /************************************************************
+     *              CEFR说明 (鼠标选中后显示描述)
+     ************************************************************/
+    const cefrSelect = document.getElementById('cefr-level');
+    const levelInfo = document.getElementById('level-info');
+    const cefrDescriptions = {
+      'A1': 'Beginner: Can understand familiar expressions, basic phrases.',
+      'A2': 'Elementary: Simple routine tasks, direct exchange of info.',
+      'B1': 'Intermediate: Deal with most travel/daily scenarios in English.',
+      'B2': 'Upper Intermediate: Interact fluently, comfortable with native speakers.',
+      'C1': 'Advanced: Express ideas spontaneously, precisely.',
+      'C2': 'Proficient: Understand with ease virtually everything heard or read.'
+    };
+    cefrSelect.addEventListener('change', () => {
+      const selectedLevel = cefrSelect.value;
+      if (selectedLevel && cefrDescriptions[selectedLevel]) {
+        levelInfo.textContent = cefrDescriptions[selectedLevel];
+        levelInfo.style.display = 'block';
+        localStorage.setItem('flexiReadCefrLevel', selectedLevel);
+      } else {
+        levelInfo.style.display = 'none';
+      }
+    });
+
+    // 若之前已选择CEFR level，则回填
+    let lastSelectedLevel = localStorage.getItem('flexiReadCefrLevel');
+    if (lastSelectedLevel) {
+      cefrSelect.value = lastSelectedLevel;
+      if (cefrDescriptions[lastSelectedLevel]) {
+        levelInfo.textContent = cefrDescriptions[lastSelectedLevel];
+        levelInfo.style.display = 'block';
+      }
+    }
+
+    /************************************************************
+     *                   生成或读取用户ID
+     ************************************************************/
+    function generateUserId() {
+      return 'user-' + Math.random().toString(36).substring(2, 15);
+    }
+    let userId = localStorage.getItem('flexiReadUserId');
+    if (!userId) {
+      userId = generateUserId();
+      localStorage.setItem('flexiReadUserId', userId);
+    }
+
+    /************************************************************
+     *          处理文本：区分是URL还是Plain text
+     ************************************************************/
+    function isValidUrl(str) {
+      try {
+        new URL(str);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    // 简单模拟URL文本提取
+    async function extractContentFromUrl(url) {
+      try {
+        // 为安全起见，真实生产环境需后端代理
+        // 这里仅作示例
+        const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch URL content');
+        }
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        // 移除不必要标签
+        const scripts = doc.querySelectorAll('script, style, nav, footer, header, aside');
+        scripts.forEach(s => s.remove());
+        
+        const mainContent = doc.querySelector('main, article, .content, #content, .main, #main');
+        let extractedText = mainContent ? mainContent.textContent : doc.body.textContent;
+
+        return extractedText
+          .replace(/(\s{2,})/g, ' ')
+          .replace(/\n+/g, '\n')
+          .trim();
+      } catch (error) {
+        console.error('Error extracting content:', error);
+        throw new Error('Unable to extract content from the provided URL. Please try pasting the text directly.');
+      }
+    }
+
+    /************************************************************
+     *          调用Dify.ai API (与你之前的逻辑一致)
+     ************************************************************/
+    async function processText(text, cefrLevel) {
+      try {
+        const response = await fetch('https://api.dify.ai/v1/workflows/run', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer app-OhfmPSY9xeMvUv2dLvjpS4LT', // 你的token
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            inputs: {
+              "CEFR": cefrLevel,
+              "enteredText": text
+            },
+            response_mode: "blocking",
+            user: userId
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (data && data.data && data.data.outputs) {
+          // 根据你自己的Workflow输出情况调整
+          return data.data.outputs.text || data.data.outputs.result || JSON.stringify(data.data.outputs);
+        } else {
+          throw new Error('No valid output from workflow');
+        }
+      } catch (error) {
+        console.error('Error processing text:', error);
+        throw error;
+      }
+    }
+
+    /************************************************************
+     *               按钮事件、处理逻辑
+     ************************************************************/
+    const processButton = document.getElementById('process-button');
+    const inputText = document.getElementById('input-text');
+    const loading = document.getElementById('loading');
+    const resultsSection = document.getElementById('results-section');
+    const resultsContent = document.getElementById('results-content');
+    const originalContent = document.getElementById('original-content');
+    const adjustedContent = document.getElementById('adjusted-content');
+    const comparisonView = document.getElementById('comparison-view');
+    const comparisonToggle = document.getElementById('comparison-toggle');
+    const errorMessage = document.getElementById('error-message');
+
+    processButton.addEventListener('click', async () => {
+      const cefrLevel = cefrSelect.value;
+      const text = inputText.value.trim();
+
+      if (!cefrLevel) {
+        showError('Please select your CEFR level.');
+        return;
+      }
+      if (!text) {
+        showError('Please enter some text or a URL.');
+        return;
+      }
+      errorMessage.style.display = 'none';
+      loading.style.display = 'block';
+      processButton.disabled = true;
+
+      let contentToProcess = text;
+
+      // 如果是URL则尝试提取
+      if (isValidUrl(text)) {
+        try {
+          contentToProcess = await extractContentFromUrl(text);
+        } catch (urlError) {
+          showError(urlError.message);
+          loading.style.display = 'none';
+          processButton.disabled = false;
+          return;
+        }
+      }
+
+      try {
+        // 调用API
+        const adjustedText = await processText(contentToProcess, cefrLevel);
+
+        // 显示结果
+        resultsContent.textContent = adjustedText;
+        originalContent.textContent = contentToProcess;
+        adjustedContent.textContent = adjustedText;
+        
+        resultsSection.style.display = 'block';
+        resultsContent.style.display = 'block';
+        comparisonView.style.display = 'none';
+        
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+      } catch (error) {
+        const msg = error.message || 'An error occurred while processing your text.';
+        showError(`Error: ${msg} - Please check browser console for details.`);
+        console.error('API Error:', error);
+      } finally {
+        loading.style.display = 'none';
+        processButton.disabled = false;
+      }
+    });
+
+    // 显示对比 / 隐藏对比
+    comparisonToggle.addEventListener('change', () => {
+      if (comparisonToggle.checked) {
+        resultsContent.style.display = 'none';
+        comparisonView.style.display = 'grid';
+      } else {
+        resultsContent.style.display = 'block';
+        comparisonView.style.display = 'none';
+      }
+    });
+
+    function showError(msg) {
+      errorMessage.textContent = msg;
+      errorMessage.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
