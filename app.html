@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlexiRead for ESL - Adjust Your Text</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #558cff;
+      --primary-dark: #4361ee;
+      --primary-gradient: linear-gradient(180deg, #e4edfc 0%, #f0f6ff 40%, #ffffff 100%);
+      --secondary-color: #8fb5f1;
+      --highlight-color: #5d8ef7;
+      --background-color: #f8fcff;
+      --text-color: #1e1e2f;
+      --subtle-text: #6c757d;
+      --border-radius: 16px;
+      --box-shadow: 0 8px 20px rgba(67, 97, 238, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    nav.navbar {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: transparent;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: var(--transition);
+    }
+
+    nav.navbar:hover {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      padding: 10px 0;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-link.cta {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: var(--border-radius);
+    }
+
+    .nav-link.cta:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .app-header {
+      text-align: center;
+      margin: 140px 0 60px;
+    }
+
+    .app-header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 20px;
+    }
+
+    .app-header p {
+      font-size: 1.2rem;
+      color: var(--subtle-text);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .form-group label {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--text-color);
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    .level-info {
+      display: none;
+      background-color: #f8f9fa;
+      border-left: 4px solid var(--primary-color);
+      border-radius: var(--border-radius);
+      padding: 15px 20px;
+      margin-top: 10px;
+      color: var(--subtle-text);
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 60px 0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    section.reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .input-section,
+    .results-section,
+    .faq-section {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 40px;
+      margin-bottom: 40px;
+    }
+
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      border: 1px solid #ced4da;
+      border-radius: var(--border-radius);
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    button {
+      background: white;
+      color: var(--primary-color);
+      padding: 14px 36px;
+      font-weight: 700;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      border: none;
+    }
+
+    button:hover {
+      transform: translateY(-4px);
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .faq-section h2 {
+      margin-bottom: 40px;
+    }
+
+    .faq-item {
+      border: 1px solid #dee2e6;
+      border-radius: var(--border-radius);
+      margin-bottom: 20px;
+      transition: var(--transition);
+      background-color: white;
+      box-shadow: var(--box-shadow);
+      overflow: hidden;
+    }
+
+    .faq-icon {
+      font-size: 1.2rem;
+      color: #adb5bd;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item:hover .faq-icon {
+      transform: rotate(180deg);
+      color: var(--primary-color);
+    }
+
+    .faq-question {
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 24px 32px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+      color: var(--text-color);
+    }
+
+    .faq-answer {
+      padding: 0 32px;
+      font-size: 1rem;
+      color: var(--subtle-text);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .faq-item:hover .faq-answer {
+      max-height: 500px;
+      padding: 20px 32px 32px;
+      background-color: #f8f9fa;
+    }
+
+    .faq-item:hover .faq-question {
+      background-color: #f1f3f5;
+    }
+
+    footer {
+      background: transparent;
+      padding: 60px 0 30px;
+      margin-top: 60px;
+      text-align: center;
+      color: var(--subtle-text);
+    }
+
+    .text-glow {
+      background: linear-gradient(270deg, #558cff, #8fb5f1, #5d8ef7, #558cff);
+      background-size: 800% 800%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      animation: glow-move 6s ease infinite;
+      display: inline-block;
+    }
+
+    @keyframes glow-move {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo">
+        <img src="logo-flexiread.png" alt="FlexiRead Logo" class="logo-img">
+      </a>
+      <div class="nav-links">
+        <a href="index.html#features" class="nav-link">Features</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+        <a href="index.html#blog" class="nav-link">Blog</a>
+        <a href="app.html" class="nav-link cta">Get Started</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="app-header">
+      <h1><span class="text-glow">FlexiRead</span> for ESL</h1>
+      <p>Adjust text to your English proficiency level for better learning</p>
+    </div>
+    <main>
+      <section class="input-section">
+        <div class="form-group">
+          <label for="cefr-level">Select your current CEFR level:</label>
+          <select id="cefr-level">
+            <option value="" disabled selected>Choose your level</option>
+            <option value="A1">A1 - Beginner</option>
+            <option value="A2">A2 - Elementary</option>
+            <option value="B1">B1 - Intermediate</option>
+            <option value="B2">B2 - Upper Intermediate</option>
+            <option value="C1">C1 - Advanced</option>
+            <option value="C2">C2 - Proficient</option>
+          </select>
+          <div id="level-info" class="level-info"></div>
+        </div>
+        <div class="form-group">
+          <label for="input-text">Enter text or URL:</label>
+          <textarea id="input-text" placeholder="Paste your text or enter a URL here..."></textarea>
+        </div>
+        <div class="error-message" id="error-message" style="display:none; color:red;"></div>
+        <div class="button-container">
+          <button id="process-button">Process Text</button>
+        </div>
+      </section>
+      <div class="loading" id="loading" style="text-align:center; display:none;">
+        <div class="spinner" style="width:40px; height:40px; border:4px solid #ccc; border-top:4px solid var(--primary-color); border-radius:50%; animation: spin 1s linear infinite; margin: 0 auto 15px;"></div>
+        <p>Processing your text...</p>
+      </div>
+      <section class="results-section" id="results-section" style="display:none;">
+        <div class="results-header" style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="color:var(--primary-color);">Adjusted Text</h2>
+          <label class="comparison-toggle">
+            <input type="checkbox" id="comparison-toggle"> Show comparison
+          </label>
+        </div>
+        <div class="results-content" id="results-content" style="background:#f1f3f5; padding:20px; border-radius:var(--border-radius); white-space:pre-wrap;"></div>
+        <div class="comparison-view" id="comparison-view" style="display:none; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="original-text" style="background:#f1f3f5; padding:20px; border-radius:var(--border-radius); white-space:pre-wrap;">
+            <h3>Original Text</h3>
+            <div id="original-content"></div>
+          </div>
+          <div class="adjusted-text" style="background:rgba(67, 97, 238, 0.1); padding:20px; border-radius:var(--border-radius); white-space:pre-wrap;">
+            <h3>Adjusted Text</h3>
+            <div id="adjusted-content"></div>
+          </div>
+        </div>
+      </section>
+      <section class="faq-section">
+        <h2 style="text-align:center; color:var(--primary-color);">Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <div class="faq-question">What is the CEFR standard?
+            <span class="faq-icon">&#8675</span>
+          </div>
+          <div class="faq-answer">
+            <p>The Common European Framework of Reference for Languages (CEFR) is an international standard for describing language ability. It is used around the world to describe learners' language skills on a six-point scale:</p>
+            <ul>
+              <li><strong>A1 (Beginner):</strong> Can understand and use familiar everyday expressions and very basic phrases.</li>
+              <li><strong>A2 (Elementary):</strong> Can communicate in simple and routine tasks requiring a simple and direct exchange of information.</li>
+              <li><strong>B1 (Intermediate):</strong> Can deal with most situations likely to arise while traveling in an area where the language is spoken.</li>
+              <li><strong>B2 (Upper Intermediate):</strong> Can interact with a degree of fluency and spontaneity that makes regular interaction with native speakers quite possible.</li>
+              <li><strong>C1 (Advanced):</strong> Can express ideas fluently and spontaneously without much obvious searching for expressions.</li>
+              <li><strong>C2 (Proficient):</strong> Can understand with ease virtually everything heard or read.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How do we determine text difficulty levels?
+            <span class="faq-icon">&#8675</span>
+          </div>
+          <div class="faq-answer">
+            <p>We analyze multiple linguistic features of the text to determine its CEFR level, including:</p>
+            <ul>
+              <li>Vocabulary complexity and frequency</li>
+              <li>Grammatical structures and tense usage</li>
+              <li>Sentence length and complexity</li>
+              <li>Text cohesion and discourse markers</li>
+              <li>Idiomatic expressions and cultural references</li>
+            </ul>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How do we modify text to match your level?
+            <span class="faq-icon">&#8675</span>
+          </div>
+          <div class="faq-answer">
+            <p>Our system adjusts the text to be slightly above your selected CEFR level to create an optimal learning experience. The modifications include:</p>
+            <ul>
+              <li>Simplifying or replacing complex vocabulary while maintaining key terms for learning</li>
+              <li>Restructuring complex sentences into more digestible forms</li>
+              <li>Providing context or explanations for difficult concepts</li>
+              <li>Maintaining the original meaning and important information</li>
+              <li>Introducing a controlled amount of new vocabulary and structures appropriate for your level</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 FlexiRead for ESL</p>
+    </footer>
+
+  </div>
+  <script>
+    function generateUserId() {
+      return 'user-' + Math.random().toString(36).substring(2, 15);
+    }
+    let userId = localStorage.getItem('FlexiReadUserId');
+    if (!userId) {
+      userId = generateUserId();
+      localStorage.setItem('FlexiReadUserId', userId);
+    }
+    let lastSelectedLevel = localStorage.getItem('FlexiReadCefrLevel');
+    if (lastSelectedLevel) {
+      document.getElementById('cefr-level').value = lastSelectedLevel;
+    }
+    const cefrDescriptions = {
+      'A1': 'Beginner level: Can understand and use familiar everyday expressions and very basic phrases.',
+      'A2': 'Elementary level: Can communicate in simple and routine tasks requiring a simple and direct exchange of information.',
+      'B1': 'Intermediate level: Can deal with most situations likely to arise while traveling in an area where the language is spoken.',
+      'B2': 'Upper Intermediate level: Can interact with a degree of fluency and spontaneity that makes regular interaction with native speakers quite possible.',
+      'C1': 'Advanced level: Can express ideas fluently and spontaneously without much obvious searching for expressions.',
+      'C2': 'Proficient level: Can understand with ease virtually everything heard or read.'
+    };
+    const cefrSelect = document.getElementById('cefr-level');
+    const levelInfo = document.getElementById('level-info');
+    cefrSelect.addEventListener('change', () => {
+      const selectedLevel = cefrSelect.value;
+      if (selectedLevel && cefrDescriptions[selectedLevel]) {
+        levelInfo.textContent = cefrDescriptions[selectedLevel];
+        levelInfo.style.display = 'block';
+        localStorage.setItem('FlexiReadCefrLevel', selectedLevel);
+      } else {
+        levelInfo.style.display = 'none';
+      }
+    });
+    if (lastSelectedLevel) {
+      const event = new Event('change');
+      cefrSelect.dispatchEvent(event);
+    }
+
+    function isValidUrl(string) {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+    async function extractContentFromUrl(url) {
+      try {
+        const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+        if (!response.ok) throw new Error('Failed to fetch URL content');
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const scripts = doc.querySelectorAll('script, style, nav, footer, header, aside');
+        scripts.forEach(el => el.remove());
+        const mainContent = doc.querySelector('main, article, .content, #content, .main, #main');
+        let extractedText = mainContent ? mainContent.textContent : doc.body.textContent;
+        return extractedText.replace(/(\s{2,})/g, ' ').replace(/\n+/g, '\n').trim();
+      } catch (error) {
+        throw new Error('Unable to extract content from the provided URL. Please try pasting the text directly.');
+      }
+    }
+    async function processText(text, cefrLevel) {
+      try {
+        const response = await fetch('https://api.dify.ai/v1/workflows/run', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer app-OhfmPSY9xeMvUv2dLvjpS4LT',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            inputs: {
+              "CEFR": cefrLevel,
+              "enteredText": text
+            },
+            response_mode: "blocking",
+            user: userId
+          })
+        });
+        if (!response.ok) throw new Error(`API error: ${response.status}`);
+        const data = await response.json();
+        return data.data.outputs.text || data.data.outputs.result || JSON.stringify(data.data.outputs);
+      } catch (error) {
+        throw error;
+      }
+    }
+    const processButton = document.getElementById('process-button');
+    const inputText = document.getElementById('input-text');
+    const loading = document.getElementById('loading');
+    const resultsSection = document.getElementById('results-section');
+    const resultsContent = document.getElementById('results-content');
+    const originalContent = document.getElementById('original-content');
+    const adjustedContent = document.getElementById('adjusted-content');
+    const comparisonView = document.getElementById('comparison-view');
+    const comparisonToggle = document.getElementById('comparison-toggle');
+    const errorMessage = document.getElementById('error-message');
+    processButton.addEventListener('click', async () => {
+      const cefrLevel = cefrSelect.value;
+      const text = inputText.value.trim();
+      if (!cefrLevel) return showError('Please select your CEFR level.');
+      if (!text) return showError('Please enter some text or a URL.');
+      errorMessage.style.display = 'none';
+      loading.style.display = 'block';
+      processButton.disabled = true;
+      try {
+        let contentToProcess = text;
+        if (isValidUrl(text)) {
+          try {
+            contentToProcess = await extractContentFromUrl(text);
+          } catch (urlError) {
+            showError(urlError.message);
+            loading.style.display = 'none';
+            processButton.disabled = false;
+            return;
+          }
+        }
+        const adjustedText = await processText(contentToProcess, cefrLevel);
+        resultsContent.textContent = adjustedText;
+        originalContent.textContent = contentToProcess;
+        adjustedContent.textContent = adjustedText;
+        resultsSection.style.display = 'block';
+        resultsContent.style.display = 'block';
+        comparisonView.style.display = 'none';
+        resultsSection.scrollIntoView({
+          behavior: 'smooth'
+        });
+      } catch (error) {
+        showError(`Error: ${error.message}`);
+      } finally {
+        loading.style.display = 'none';
+        processButton.disabled = false;
+      }
+    });
+    comparisonToggle.addEventListener('change', () => {
+      resultsContent.style.display = comparisonToggle.checked ? 'none' : 'block';
+      comparisonView.style.display = comparisonToggle.checked ? 'grid' : 'none';
+    });
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        faqItem.classList.toggle('active');
+      });
+    });
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.style.display = 'block';
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
