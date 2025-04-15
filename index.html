@@ -173,7 +173,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 60px;
+      gap: 40px;
       margin-bottom: 80px;
       flex-wrap: wrap;
     }
@@ -209,11 +209,13 @@
 
     .feature-image {
       flex: 1;
-      min-width: 300px;
-      max-width: 500px;
+      max-width: 360px; 
+      width: 100%;
       height: auto;
+      object-fit: contain;   
       box-shadow: var(--box-shadow);
       border-radius: var(--border-radius);
+      padding: 10px;     
     }
 
     .faq-container {
@@ -450,7 +452,7 @@
             Content adjusted to be slightly above your CEFR level creates the optimal learning challenge, based on proven language acquisition research.
           </div>
         </div>
-        <img src='./feature-1.png' alt="Feature illustration" class="feature-image">
+        <img src='./feature-1.png' alt="Personalized Learning" class="feature-image">
       </div>
 
       <div class="feature-block">
@@ -461,7 +463,7 @@
             Use authentic articles, news, and websites instead of simplified textbook content. Learn from material you're actually interested in.
           </div>
         </div>
-        <img src='./feature-2.png' alt="Feature illustration" class="feature-image">
+        <img src='./feature-2.png' alt="Real-World Content" class="feature-image">
       </div>
 
       <div class="feature-block">
@@ -472,7 +474,7 @@
             Paste any text or URL and get results in seconds. Compare the original with the adjusted version to see what's changed.
           </div>
         </div>
-        <img src='./feature-3.png' alt="Feature illustration" class="feature-image">
+        <img src='./feature-3.png' alt="Instant Adjustment" class="feature-image">
       </div>
     </div>
   </section>
