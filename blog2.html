@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understanding CEFR Levels in ESL Learning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #558cff;
+      --primary-dark: #4361ee;
+      --primary-gradient: linear-gradient(180deg, #e4edfc 0%, #f0f6ff 40%, #ffffff 100%);
+      --secondary-color: #8fb5f1;
+      --highlight-color: #5d8ef7;
+      --background-color: #f8fcff;
+      --text-color: #1e1e2f;
+      --subtle-text: #6c757d;
+      --border-radius: 16px;
+      --box-shadow: 0 8px 20px rgba(67, 97, 238, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    nav.navbar {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: transparent;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: var(--transition);
+    }
+
+    nav.navbar:hover {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 180px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-link.cta {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: var(--border-radius);
+    }
+
+    .nav-link.cta:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .blog-main {
+      max-width: 800px;
+      margin: 260px auto 60px;
+      padding: 0 20px;
+    }
+
+    .blog-cover {
+      width: 100%;
+      height: 300px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      object-fit: cover;
+      margin-bottom: 40px;
+    }
+
+    .blog-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .blog-date {
+      color: var(--subtle-text);
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+
+    .blog-content h2 {
+      font-size: 1.6rem;
+      margin-top: 40px;
+      margin-bottom: 16px;
+    }
+
+    .blog-content h3 {
+      font-size: 1.3rem;
+      margin-top: 30px;
+      margin-bottom: 12px;
+    }
+
+    .blog-content p {
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+
+    .blog-content ul {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+
+    .blog-content blockquote {
+      margin: 20px 0;
+      padding: 20px;
+      background-color: #f1f3f5;
+      border-left: 4px solid var(--primary-color);
+      font-style: italic;
+      color: var(--subtle-text);
+    }
+
+    .blog-footer-nav {
+      margin-top: 60px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .blog-footer-nav a {
+      background-color: white;
+      color: var(--primary-color);
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+
+    .blog-footer-nav a:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background: #f1f3f5;
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 40px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-column h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--subtle-text);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--subtle-text);
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo">
+        <img src="./logo-flexiread.png" alt="FlexiRead Logo" class="logo-img" />
+      </a>
+      <div class="nav-links">
+        <a href="index.html#features" class="nav-link">Features</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+        <a href="index.html#blog" class="nav-link">Blog</a>
+        <a href="app.html" class="nav-link cta">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blog Content -->
+    <div class="blog-main">
+    <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Blog cover" class="blog-cover">
+    <h1 class="blog-title">Effective Reading Strategies for ESL Students</h1>
+    <div class="blog-date">March 28, 2025</div>
+
+    <div class="blog-content">
+      <p>Reading in a second language can be challenging, but the right strategies can make it easier and more enjoyable. This article introduces practical techniques ESL students can use to enhance comprehension and retention.</p>
+      <h2>Skimming and Scanning</h2>
+      <p>Use skimming to get the gist of a text and scanning to locate specific details. These strategies help you read efficiently without feeling overwhelmed.</p>
+      <h2>Vocabulary Mapping</h2>
+      <p>Create word maps for new terms to understand their meaning, usage, and relationships. This method helps solidify vocabulary knowledge in context.</p>
+      <blockquote>
+        "Strategic reading helps learners approach texts with purpose and confidence."
+      </blockquote>
+      <h2>Reading with Purpose</h2>
+      <p>Set a goal before you read. Are you reading for detail, main ideas, or vocabulary? This focus keeps you engaged and improves learning outcomes.</p>
+    </div>
+
+    <div class="blog-footer-nav">
+      <a href="blog1.html">← Previous</a>
+      <a href="index.html#blog">Back to Blog</a>
+      <a href="blog3.html">Next →</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>FlexiRead</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Resources</h3>
+        <ul class="footer-links">
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Get Started</h3>
+        <ul class="footer-links">
+          <li><a href="app.html">Try the App</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 FlexiRead for ESL. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
