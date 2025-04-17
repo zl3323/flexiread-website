@@ -464,55 +464,80 @@
           </div>
         </div>
       </section>
-      <section class="faq-section">
-        <h2 style="text-align:center; color:var(--primary-color);">Frequently Asked Questions</h2>
+<!-- FAQ Section -->
+      <section id="faq" class="faq">
+        <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Get answers to common questions about FlexiRead</p>
+      </div>
+      <div class="faq-container">
         <div class="faq-item">
-          <div class="faq-question">What is the CEFR standard?
+          <div class="faq-question">
+            What is CEFR and how can I determine my level?
             <span class="faq-icon">&#8675</span>
           </div>
           <div class="faq-answer">
-            <p>The Common European Framework of Reference for Languages (CEFR) is an international standard for describing language ability. It is used around the world to describe learners' language skills on a six-point scale:</p>
-            <ul>
-              <li><strong>A1 (Beginner):</strong> Can understand and use familiar everyday expressions and very basic phrases.</li>
-              <li><strong>A2 (Elementary):</strong> Can communicate in simple and routine tasks requiring a simple and direct exchange of information.</li>
-              <li><strong>B1 (Intermediate):</strong> Can deal with most situations likely to arise while traveling in an area where the language is spoken.</li>
-              <li><strong>B2 (Upper Intermediate):</strong> Can interact with a degree of fluency and spontaneity that makes regular interaction with native speakers quite possible.</li>
-              <li><strong>C1 (Advanced):</strong> Can express ideas fluently and spontaneously without much obvious searching for expressions.</li>
-              <li><strong>C2 (Proficient):</strong> Can understand with ease virtually everything heard or read.</li>
+            <p>The Common European Framework of Reference for Languages (CEFR) is an international standard for describing language ability on a six-point scale: <strong>A1</strong> (beginner), <strong>A2</strong> (elementary), <strong>B1</strong> (intermediate), <strong>B2</strong> (upper intermediate), <strong>C1</strong> (advanced), and <strong>C2</strong> (proficiency).</p>
+            <p>If you've taken standardized English tests, you can estimate your CEFR level using these equivalencies:</p>
+            <div style="display: flex; justify-content: center; margin: 20px 0;">
+              <img src="./CEFR-level.png" alt="CEFR Level Equivalencies" style="max-width: 100%; width: 450px; border-radius: 12px; box-shadow: 0 4px 12px rgba(67, 97, 238, 0.15);">
+            </div>
+            <p><small>Source: Information adapted from Educational Testing Service (ETS) TOEFL score comparison guidelines. For more detailed information, visit <a href="https://www.ets.org/toefl/institutions/ibt/compare-scores.html#accordion-ff2afbe1ab-item-95a6512adf" style="color: var(--primary-color);">https://www.ets.org/toefl</a></small></p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            How does FlexiRead help improve my reading skills?
+            <span class="faq-icon">&#8675</span>
+          </div>
+          <div class="faq-answer">
+            <p>FlexiRead applies <strong>Krashen's i+1 principle</strong> using advanced AI technology to adapt any text to be precisely one level above your current ability—creating the optimal zone for language acquisition. Our system:</p>
+            <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
+              <li>Analyzes text using quantifiable linguistic metrics (lexical density, subordination index, T-unit complexity, etc.)</li>
+              <li>Modifies vocabulary and sentence structures while preserving key terminology and original meaning</li>
+              <li>Integrates appropriate scaffolding techniques based on second language acquisition research</li>
+              <li>Evaluates pedagogical value to ensure optimal learning opportunities</li>
+              <li>Verifies the adapted text meets exact CEFR specifications through multi-dimensional analysis</li>
+            </ul>
+            <p>This scientifically calibrated approach ensures you're consistently exposed to language that challenges you appropriately, allowing for natural acquisition of new vocabulary, grammatical structures, and discourse patterns.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            How is FlexiRead different from using ChatGPT or other AI tools?
+            <span class="faq-icon">&#8675</span>
+          </div>
+          <div class="faq-answer">
+            <p>While general-purpose AI tools can simplify texts, FlexiRead offers several distinct advantages:</p>
+            <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
+              <li><strong>Precise CEFR calibration</strong>: Our system implements detailed linguistic metrics with specific thresholds for each CEFR level (e.g., B1 texts have lexical density of 0.50-0.55, mean sentence length of 10-15 words, etc.)</li>
+              <li><strong>Pedagogical optimization</strong>: Beyond linguistic modifications, we evaluate learning objective alignment, noticing facilitation, and scaffolding effectiveness—incorporating principles from second language acquisition research like Schmidt's Noticing Hypothesis and VanPatten's Form-Meaning Connection theory</li>
+              <li><strong>Multi-stage verification</strong>: Our specialized pipeline of five AI models ensures both linguistic accuracy and pedagogical value, with the final output reflecting expert consensus rather than a single model's output</li>
+              <li><strong>Research-based approach</strong>: Every aspect of FlexiRead is grounded in established linguistic research and language acquisition theory, creating truly optimized learning materials rather than simply "easier" texts</li>
             </ul>
           </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">How do we determine text difficulty levels?
+          <div class="faq-question">
+            How can I best use FlexiRead to improve my language skills?
             <span class="faq-icon">&#8675</span>
           </div>
           <div class="faq-answer">
-            <p>We analyze multiple linguistic features of the text to determine its CEFR level, including:</p>
-            <ul>
-              <li>Vocabulary complexity and frequency</li>
-              <li>Grammatical structures and tense usage</li>
-              <li>Sentence length and complexity</li>
-              <li>Text cohesion and discourse markers</li>
-              <li>Idiomatic expressions and cultural references</li>
+            <p>To maximize your learning with FlexiRead:</p>
+            <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 15px;">
+              <li><strong>Choose authentic materials that genuinely interest you</strong> – motivation is key to sustained language development</li>
+              <li><strong>Compare original and adapted versions</strong> to notice vocabulary and structural differences, which helps build awareness of higher-level language patterns</li>
+              <li><strong>Focus on the new vocabulary and grammar structures</strong> introduced in the adapted text – these represent your next learning targets</li>
+              <li><strong>Gradually increase your CEFR level</strong> as you become comfortable with your current level's adapted texts</li>
+              <li><strong>Read regularly</strong> – consistent exposure to comprehensible input at the right level is more effective than occasional intensive study</li>
+              <li><strong>Try reading the original after the adapted version</strong> to see how much you can understand with the context and vocabulary you've gained</li>
             </ul>
           </div>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">How do we modify text to match your level?
-            <span class="faq-icon">&#8675</span>
-          </div>
-          <div class="faq-answer">
-            <p>Our system adjusts the text to be slightly above your selected CEFR level to create an optimal learning experience. The modifications include:</p>
-            <ul>
-              <li>Simplifying or replacing complex vocabulary while maintaining key terms for learning</li>
-              <li>Restructuring complex sentences into more digestible forms</li>
-              <li>Providing context or explanations for difficult concepts</li>
-              <li>Maintaining the original meaning and important information</li>
-              <li>Introducing a controlled amount of new vocabulary and structures appropriate for your level</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      </div>
+    </div>
+    </section>
     </main>
     <footer>
       <p>&copy; 2025 FlexiRead for ESL</p>
