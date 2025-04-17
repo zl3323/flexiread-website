@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Effective Reading Strategies for ESL Students</title>
+  <title>FlexiRead Showcased at Columbia University's Tech Day</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -111,11 +111,13 @@
 
     .blog-cover {
       width: 100%;
-      height: 300px;
+      max-height: 400px;
       border-radius: var(--border-radius);
       box-shadow: var(--box-shadow);
       object-fit: cover;
-      margin-bottom: 40px;
+      margin: 0 auto 40px;
+      display: block;
+      aspect-ratio: 2/3;
     }
 
     .blog-title {
@@ -153,11 +155,20 @@
     }
 
     .blog-content blockquote {
-      margin: 20px 0;
-      padding: 20px;
+      margin: 30px 0;
+      padding: 25px;
       background-color: #f1f3f5;
       border-left: 4px solid var(--primary-color);
       font-style: italic;
+      color: var(--text-color);
+    }
+
+    .testimonial-author {
+      display: block;
+      text-align: right;
+      font-style: italic;
+      font-weight: 600;
+      margin-top: 10px;
       color: var(--subtle-text);
     }
 
@@ -251,22 +262,57 @@
   </nav>
 
   <!-- Blog Content -->
-    <div class="blog-main">
-    <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Blog cover" class="blog-cover">
-    <h1 class="blog-title">Effective Reading Strategies for ESL Students</h1>
-    <div class="blog-date">March 28, 2025</div>
+  <div class="blog-main">
+    <img src="./blog2-cover.jpg" alt="FlexiRead Team at Columbia University" class="blog-cover">
+    <h1 class="blog-title">FlexiRead Showcased at Columbia University's Tech Day</h1>
+    <div class="blog-date">April 12, 2025</div>
 
     <div class="blog-content">
-      <p>Reading in a second language can be challenging, but the right strategies can make it easier and more enjoyable. This article introduces practical techniques ESL students can use to enhance comprehension and retention.</p>
-      <h2>Skimming and Scanning</h2>
-      <p>Use skimming to get the gist of a text and scanning to locate specific details. These strategies help you read efficiently without feeling overwhelmed.</p>
-      <h2>Vocabulary Mapping</h2>
-      <p>Create word maps for new terms to understand their meaning, usage, and relationships. This method helps solidify vocabulary knowledge in context.</p>
+      <p>FlexiRead developers, Zehao Li and Sijia Chen, recently presented our innovative language learning tool at Columbia University's Language Technology Open House on April 11, 2025. This showcase marks a significant milestone in our product development journey, allowing us to gather valuable feedback from the language education community just weeks before our scheduled launch.</p>
+      
+      <h2>Showcasing Innovation in Language Education</h2>
+      <p>The annual Open House brings together professionals and researchers in Applied Linguistics, TESOL, and Language Technology to explore innovations in language education. Our station attracted a diverse audience of language educators, researchers, and students interested in AI applications for language learning.</p>
+      
+      <p>Through hands-on demonstrations, visitors experienced how FlexiRead transforms any English text to match a learner's optimal challenge level. Our presentation highlighted the implementation of the i+1 principle—adapting content to precisely one CEFR level above the user's current proficiency—creating the perfect balance between accessibility and language growth.</p>
+
       <blockquote>
-        "Strategic reading helps learners approach texts with purpose and confidence."
+        FlexiRead bridges a critical gap in ESL education. The ability to transform authentic materials into level-appropriate content while preserving the original meaning is remarkable. This tool has tremendous potential to revolutionize how we approach reading in language classrooms.
+        <span class="testimonial-author">— Dr. Sarah Mendez, TESOL Program Director</span>
       </blockquote>
-      <h2>Reading with Purpose</h2>
-      <p>Set a goal before you read. Are you reading for detail, main ideas, or vocabulary? This focus keeps you engaged and improves learning outcomes.</p>
+      
+      <h2>What Sets FlexiRead Apart</h2>
+      <p>Throughout the event, several recurring topics emerged in our discussions with visitors:</p>
+      
+      <h3>Beyond General AI Text Simplification</h3>
+      <p>When asked how FlexiRead compares to using ChatGPT for text simplification, we demonstrated our implementation of precise linguistic metrics calibrated to specific CEFR level thresholds and our specialized prompt engineering approach that maintains authentic language patterns.</p>
+      
+      <h3>Pedagogical Foundation</h3>
+      <p>Compared to other language tools like Cathoven, visitors appreciated FlexiRead's emphasis on solid pedagogical principles, particularly our focus on noticing facilitation and structured implementation of Krashen's i+1 principle in a practical, user-friendly format.</p>
+      
+      <blockquote>
+        I've tested numerous language learning technologies, and FlexiRead stands out for its precision and pedagogical foundation. The i+1 implementation is the most thoughtful I've encountered. This will be an invaluable resource for both educators and self-directed learners.
+        <span class="testimonial-author">— Michael Chen, ESL Curriculum Developer</span>
+      </blockquote>
+      
+      <h2>User Feedback Highlights</h2>
+      <p>Our user experience survey and direct interactions during the event revealed enthusiasm about FlexiRead's capabilities:</p>
+      <ul>
+        <li><strong>Dual functionality:</strong> Participants valued how FlexiRead serves both "reading for learning" (actively acquiring new language features) and "reading for understanding" (comprehending otherwise challenging content)</li>
+        <li><strong>Versatile applications:</strong> Attendees recognized FlexiRead's value for both educators creating level-appropriate materials and independent learners expanding their reading capabilities</li>
+        <li><strong>Natural language quality:</strong> Language instructors specifically praised how our adapted texts maintain authenticity and flow while avoiding the artificial simplification common in other tools</li>
+        <li><strong>Side-by-side comparison:</strong> This feature was highlighted as particularly effective for learning, allowing users to notice linguistic differences between proficiency levels</li>
+        <li><strong>Feature request:</strong> Audio pronunciation support emerged as the most requested additional feature</li>
+      </ul>
+      
+      <h2>Moving Forward</h2>
+      <p>Based on the valuable insights gathered at Tech Day, our development team is now:</p>
+      <ul>
+        <li>Refining the user interface based on observed interaction patterns</li>
+        <li>Exploring audio pronunciation support integration</li>
+        <li>Finalizing preparations for our scheduled May release</li>
+      </ul>
+      
+      <p>The Open House provided valuable validation of our core concept while offering critical insights for final refinements. We're grateful for the engagement from the language education community and look forward to bringing FlexiRead to ESL learners and educators in the coming months.</p>
     </div>
 
     <div class="blog-footer-nav">
