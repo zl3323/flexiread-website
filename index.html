@@ -277,7 +277,6 @@
 
   .blog-image {
     height: 200px;
-    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--background-color);
@@ -292,6 +291,10 @@
   }
 
   .blog-image-2 {
+    background-size: cover;
+  }
+
+  .blog-image-3 {
     background-size: cover;
   }
 
@@ -585,7 +588,7 @@
   </section>
 
   <!-- Blog Section -->
-  <section id="blog" class="blog">
+<section id="blog" class="blog">
   <div class="container">
     <div class="section-title">
       <h2>Featured Blogs</h2>
@@ -610,20 +613,18 @@
           <a href="blog2.html" class="blog-link">Read More →</a>
         </div>
       </div>
-    </div>
-  </div>
-        <div class="blog-card">
-          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1519791883288-dc8bd696e667?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
-          <div class="blog-content">
-            <h3>AI Tools for Language Learners: Beyond FlexiRead</h3>
-            <div class="blog-meta">April 5, 2025</div>
-            <p class="blog-excerpt">Explore how AI is revolutionizing language learning. This article covers the most innovative tools and how to incorporate them into your study routine.</p>
-            <a href="blog3.html" class="blog-link">Read More →</a>
-          </div>
+      <div class="blog-card">
+        <div class="blog-image blog-image-3" style="background-image: url('https://images.unsplash.com/photo-1519791883288-dc8bd696e667?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
+        <div class="blog-content">
+          <h3>AI Tools for Language Learners: Beyond FlexiRead</h3>
+          <div class="blog-meta">April 5, 2025</div>
+          <p class="blog-excerpt">Explore how AI is revolutionizing language learning. This article covers the most innovative tools and how to incorporate them into your study routine.</p>
+          <a href="blog3.html" class="blog-link">Read More →</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
   <!-- 页尾 Footer -->
   <footer>
     <div class="container">
