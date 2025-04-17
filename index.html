@@ -275,49 +275,80 @@
       background-color: #f8f9fa;
     }
 
-    .blog-grid {
-      display: grid;
-      gap: 32px;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
+  .blog-image {
+    height: 200px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    position: relative;
+    overflow: hidden;
+  }
 
-    .blog-card {
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: var(--box-shadow);
-      overflow: hidden;
-      transition: var(--transition);
-    }
+  .blog-image-1 {
+    background-size: contain;
+    padding: 20px;
+  }
 
-    .blog-card:hover {
-      transform: translateY(-8px);
-    }
+  .blog-image-2 {
+    background-size: cover;
+  }
 
-    .blog-image {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-    }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
 
-    .blog-content {
-      padding: 24px;
-    }
+  .blog-card {
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+  }
 
-    .blog-meta {
-      font-size: 0.9rem;
-      color: var(--subtle-text);
-      margin-bottom: 12px;
-    }
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(67, 97, 238, 0.15);
+  }
 
-    .blog-link {
-      color: var(--primary-color);
-      text-decoration: none;
-      font-weight: 600;
-    }
+  .blog-content {
+    padding: 25px;
+  }
 
-    .blog-link:hover {
-      text-decoration: underline;
-    }
+  .blog-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    color: var(--subtle-text);
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+
+  .blog-excerpt {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.9;
+  }
+
+  .blog-link {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  .blog-link:hover {
+    color: var(--primary-dark);
+  }
 
     footer {
       background: #f1f3f5;
@@ -555,30 +586,32 @@
 
   <!-- Blog Section -->
   <section id="blog" class="blog">
-    <div class="container">
-      <div class="section-title">
-        <h2>Featured Blogs</h2>
-        <p>Learn our Integrative Project journey</p>
+  <div class="container">
+    <div class="section-title">
+      <h2>Featured Blogs</h2>
+      <p>Learn our Integrative Project journey</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-image blog-image-1" style="background-image: url('./logo-flexiread.png');"></div>
+        <div class="blog-content">
+          <h3>FlexiRead: Personalized Text Adaptation for ESL Learners</h3>
+          <div class="blog-meta">April 10, 2025</div>
+          <p class="blog-excerpt">A comprehensive introduction regarding how FlexiRead addresses critical challenges faced by self-motivated ESL learners seeking to improve their reading skills independently.</p>
+          <a href="blog1.html" class="blog-link">Read More →</a>
+        </div>
       </div>
-      <div class="blog-grid">
-        <div class="blog-card">
-          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1373&q=80');"></div>
-          <div class="blog-content">
-            <h3>FlexiRead: Personalized Text Adaptation for ESL Learners</h3>
-            <div class="blog-meta">April 15, 2025</div>
-            <p class="blog-excerpt">A comprehensive introduction regarding how FlexiRead addresses critical challenges faced by self-motivated ESL learners seeking to improve their reading skills independently.</p>
-            <a href="blog1.html" class="blog-link">Read More →</a>
-          </div>
+      <div class="blog-card">
+        <div class="blog-image blog-image-2" style="background-image: url('./blog2-cover.jpg');"></div>
+        <div class="blog-content">
+          <h3>FlexiRead Showcased at Columbia University's Tech Day</h3>
+          <div class="blog-meta">April 17, 2025</div>
+          <p class="blog-excerpt">FlexiRead developers presented our innovative language learning tool at Columbia University's Language Technology Open House.</p>
+          <a href="blog2.html" class="blog-link">Read More →</a>
         </div>
-        <div class="blog-card">
-          <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
-          <div class="blog-content">
-            <h3>Effective Reading Strategies for ESL Students</h3>
-            <div class="blog-meta">March 28, 2025</div>
-            <p class="blog-excerpt">Discover proven techniques to improve your reading comprehension and vocabulary retention. Learn how to approach challenging texts strategically.</p>
-            <a href="blog2.html" class="blog-link">Read More →</a>
-          </div>
-        </div>
+      </div>
+    </div>
+  </div>
         <div class="blog-card">
           <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1519791883288-dc8bd696e667?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
           <div class="blog-content">
