@@ -148,8 +148,10 @@
 
     section {
       padding: 60px 0;
-      opacity: 1; /* Changed from 0 to 1 */
-      transform: none; /* Changed from translateY(40px) */
+      opacity: 1;
+      /* Changed from 0 to 1 */
+      transform: none;
+      /* Changed from translateY(40px) */
     }
 
     .input-section,
@@ -387,6 +389,31 @@
         transform: translate(0, 0);
       }
     }
+
+    .download-button {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .download-button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .ethical-notice,
+    .ai-limitation-notice {
+      background-color: rgba(67, 97, 238, 0.05);
+      border-radius: var(--border-radius);
+      padding: 10px;
+    }
   </style>
 </head>
 
@@ -429,6 +456,10 @@
           <textarea id="input-text" placeholder="Paste your text or enter a URL here..."></textarea>
         </div>
         <div class="error-message" id="error-message" style="display:none; color:red;"></div>
+        <div id="ethical-notice" class="ethical-notice" style="font-size: 0.85rem; color: var(--subtle-text); margin-top: -15px; margin-bottom: 20px;">
+          <p>⚠️ Using URLs may have ethical considerations regarding website scraping.</p>
+          <p>⚠️ Results from AI may contain inaccuracies.</p>
+        </div>
         <div class="button-container">
           <button id="process-button">Process Text</button>
         </div>
@@ -462,6 +493,12 @@
             <h3>Adjusted Text</h3>
             <div id="adjusted-content"></div>
           </div>
+        </div>
+        <div class="button-container" style="margin-top: 20px;">
+          <button id="download-button" class="download-button">Download Adjusted Text</button>
+        </div>
+        <div id="ai-limitation-notice" class="ai-limitation-notice" style="font-size: 0.85rem; color: var(--subtle-text); margin-top: 20px; text-align: center;">
+          <p>⚠️ Note: The adjusted text is AI-generated and may contain inaccuracies.</p>
         </div>
       </section>
       <section class="faq-section">
@@ -528,7 +565,7 @@
       </section>
     </main>
     <footer>
-      <p>&copy; 2025 FlexiRead for ESL</p>
+      <p>&copy; 2025 Zehao Li & Sijia Cheng. FlexiRead for ESL. All rights reserved.</p>
     </footer>
 
   </div>
@@ -618,13 +655,12 @@
         throw error;
       }
     }
-    
+
     function showError(message) {
       errorMessage.textContent = message;
       errorMessage.style.display = 'block';
       document.getElementById('input-section').style.display = 'block';
     }
-    
     const processButton = document.getElementById('process-button');
     const inputText = document.getElementById('input-text');
     const loading = document.getElementById('loading');
@@ -635,26 +671,19 @@
     const comparisonView = document.getElementById('comparison-view');
     const comparisonToggle = document.getElementById('comparison-toggle');
     const errorMessage = document.getElementById('error-message');
-    
     processButton.addEventListener('click', async () => {
       const cefrLevel = cefrSelect.value;
       const text = inputText.value.trim();
-      // Early validation
       if (!cefrLevel) return showError('Please select your CEFR level.');
       if (!text) return showError('Please enter some text or a URL.');
-      
-      // Hide previous sections and errors
       errorMessage.style.display = 'none';
       document.getElementById('input-section').style.display = 'none';
       loading.style.display = 'block';
       resultsSection.style.display = 'none';
-      
-      // Add space to prevent overlap with FAQ section
+      document.getElementById('ethical-notice').style.display = 'none';
       const faqSection = document.querySelector('.faq-section');
       faqSection.style.marginTop = '100px';
-      
       processButton.disabled = true;
-      
       try {
         let contentToProcess = text;
         if (isValidUrl(text)) {
@@ -692,10 +721,28 @@
         processButton.disabled = false;
       }
     });
-    
     comparisonToggle.addEventListener('change', () => {
       resultsContent.style.display = comparisonToggle.checked ? 'none' : 'block';
       comparisonView.style.display = comparisonToggle.checked ? 'grid' : 'none';
+    });
+
+    function downloadAsDocx(text, filename) {
+      const blob = new Blob([text], {
+        type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename || 'adjusted-text.docx';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    const downloadButton = document.getElementById('download-button');
+    downloadButton.addEventListener('click', () => {
+      const textToDownload = resultsContent.textContent;
+      const now = new Date();
+      const filename = `flexiread-adjusted-${now.toISOString().slice(0,10)}.docx`;
+      downloadAsDocx(textToDownload, filename);
     });
   </script>
 
