@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlexiRead: Personalized Text Adaptation for ESL Learners</title>
+  <link rel="icon" type="image/png" href="./favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -292,11 +293,11 @@
 
       <h2>Bridging the Gap in ESL Reading Development</h2>
       <p>Leveled reading—assigning texts based on reading ability—has been a common approach in reading instruction since Betts' Informal Reading Inventory (1946). While research demonstrates its effectiveness in improving reading skills for ESL learners (Alowais, 2021), traditional leveled reading systems have important limitations.</p>
-      
+
       <p>A key challenge is that second-language reading comprehension depends heavily on learners' knowledge of the target language—particularly vocabulary and syntactic awareness. Students with limited proficiency often struggle to understand texts, even when applying general reading strategies (Guo & Roehrig, 2011). This makes appropriate text selection crucial for ESL reading development.</p>
-      
+
       <p>However, as Hoffman (2017) notes, conventional leveling systems often restrict learners to a limited selection of texts that may not align with their interests or provide optimal challenge for growth. Many programs prioritize readability formulas over content variety, making it difficult for students to access diverse or informational texts. For example, an ESL student interested in science may struggle to find appropriately leveled scientific articles, as narrative texts dominate most leveled reading lists.</p>
-      
+
       <p>Additionally, rigid leveling systems frequently prevent ESL learners from accessing texts beyond their assessed level, even when motivated to do so. This limitation is particularly problematic for ESL learners, whose motivation and progress depend heavily on engaging with appropriately challenging and personally relevant materials.</p>
 
       <blockquote>
@@ -316,12 +317,12 @@
         <li>Experience precisely calibrated adaptation to one CEFR level above your current proficiency</li>
         <li>Engage with materials that provide the right balance of challenge and comprehensibility</li>
       </ul>
-      
+
       <p>FlexiRead expands your access to diverse reading materials while supporting structured engagement with texts beyond your assessed level—creating the ideal environment for natural language growth and sustained motivation.</p>
 
       <h2>Learning Journey Integration</h2>
       <p>Unlike existing systems that operate as isolated tools or rely on a limited range of pre-selected materials, FlexiRead offers a cohesive, integrated approach that aligns with learners' interests while facilitating gradual progress.</p>
-      
+
       <p>Our platform provides a complete learning journey through four interconnected features:</p>
       <ol>
         <li><strong>Adapting reading materials</strong>: Texts are aligned with your CEFR proficiency level, ensuring you start with materials suited to your current skills while progressively moving toward more challenging content.</li>
@@ -329,12 +330,12 @@
         <li><strong>Providing reading comprehension exercises</strong>: Generated exercises scaffold learning by reinforcing understanding and encouraging active engagement with the text.</li>
         <li><strong>Modifying text difficulty dynamically</strong>: As you improve, the system adjusts text complexity to gradually expose you to more advanced language structures.</li>
       </ol>
-      
+
       <p>This integrated approach ensures that every aspect of the reading experience contributes to a coherent learning progression, maximizing both engagement and skill development.</p>
 
       <h2>How It Works</h2>
       <p>Our system employs a sophisticated AI workflow powered by five specialized language models that work in sequence:</p>
-      
+
       <ol>
         <li><strong>CEFR Level Assessment</strong>: Analyzes your chosen text through a multi-dimensional approach examining lexical features, syntactic complexity, discourse patterns, and functional language</li>
         <li><strong>Text Adaptation</strong>: Transforms the text to exactly one level above your current proficiency, with vocabulary strictly controlled according to standardized wordlists, while carefully modifying sentence structures and discourse elements to preserve meaning</li>
@@ -352,44 +353,38 @@
           <ul>
             <li>Type-Token Ratio (measuring lexical diversity by dividing unique words by total words) (Malvern et al., 2004)</li>
             <li>Lexical density (ratio of content to function words) (Segalowitz & Lane, 2000)</li>
-            <li>CEFR-J Wordlist Alignment (Octanove Labs, 2020; Tono Laboratory, 2020)</li>
-            <li>Level-Specific Vocabulary Distribution</li>
+            <li>CEFR-J Wordlist Alignment: Our primary vocabulary control resource ensuring words are appropriate for each target level (Octanove Labs, 2020; Tono Laboratory at Tokyo University of Foreign Studies, 2020)</li>
+            <li>Level-Specific Vocabulary Distribution: Carefully controlled distribution of vocabulary according to CEFR levels</li>
           </ul>
         </div>
 
         <div class="metrics-section">
-          <h4>Syntactic Metrics</h4>
+          <h4>Structural Metrics</h4>
           <ul>
             <li>Subordination index (ratio of subordinate clauses to total clauses) (Matthiessen & Thompson, 2011)</li>
             <li>T-unit complexity (clauses per independent clause with all its dependent clauses) (Gaies, 1980)</li>
-            <li>Readability Formulas: Flesch-Kincaid Grade Level and Flesch Reading Ease</li>
+            <li>Discourse Evaluation: Cohesive device variety and rhetorical structure</li>
+            <li>Functional Language Analysis: Range of language functions and implied meaning</li>
+            <li>Readability Formulas: Flesch-Kincaid Grade Level and Flesch Reading Ease (<em>Flesch Reading</em>, n.d.)</li>
           </ul>
         </div>
+      </div>
 
-        <div class="metrics-section">
-          <h4>Discourse Metrics</h4>
-          <ul>
-            <li>Cohesive device variety</li>
-            <li>Rhetorical structure</li>
-            <li>Functional Language Analysis</li>
-            <li>Range of language functions and implied meaning</li>
-          </ul>
-        </div>
-
+      <div class="metrics-grid" style="grid-template-columns: 1fr;">
         <div class="metrics-section">
           <h4>Pedagogical Metrics</h4>
           <ul>
-            <li>Learning Objective Alignment (mapping to CEFR can-do statements) (Goodier, 2014)</li>
-            <li>Scaffolding Effectiveness</li>
-            <li>Noticing Facilitation</li>
-            <li>Cognitive Processing Support</li>
+            <li>Learning Objective Alignment: Maps text features to CEFR can-do statements (Goodier, 2014)</li>
+            <li>Scaffolding Effectiveness: Integrates strategic clarifications and context clues for unfamiliar vocabulary</li>
+            <li>Noticing Facilitation: Enhances features that promote attention to form and language structure</li>
+            <li>Cognitive Processing Support: Optimizes information chunking and balance of explicit/implicit content</li>
           </ul>
         </div>
       </div>
 
       <h2>Understanding CEFR Levels</h2>
       <p>The Common European Framework of Reference for Languages (CEFR) provides a standardized scale for measuring language proficiency across six levels from A1 (beginner) to C2 (mastery). This framework serves as both a learning guide and an assessment tool in FlexiRead:</p>
-      
+
       <h3>Six CEFR Levels</h3>
       <ul>
         <li><strong>A1</strong> — Can understand and use familiar expressions.</li>
@@ -399,16 +394,16 @@
         <li><strong>C1</strong> — Can express ideas fluently and spontaneously.</li>
         <li><strong>C2</strong> — Can understand virtually everything heard or read.</li>
       </ul>
-      
+
       <blockquote>
         The CEFR gives you a clear and shared language to describe skills and set meaningful goals.
       </blockquote>
-      
+
       <h3>Benefits of CEFR-Based Learning</h3>
       <p>By knowing your CEFR level, you can select materials that challenge you just enough without causing frustration. This follows the i+1 principle in language acquisition which is built into FlexiRead's core functionality.</p>
-      
+
       <p>FlexiRead personalizes content based on your CEFR level, ensuring efficient and engaging practice that pushes you to grow without overwhelming you with material that's too advanced. This creates a seamless progression path through increasingly complex language structures and vocabulary.</p>
-      
+
       <p>This personalized approach maintains an optimal balance between challenge and comprehension—keeping you in the sweet spot where language acquisition happens naturally and motivation remains high.</p>
 
       <div class="reference-list">
