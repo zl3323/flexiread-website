@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Tools for Language Learners: Beyond FlexiRead</title>
+  <title>FlexiRead Project Reflection</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -135,12 +135,14 @@
       font-size: 1.6rem;
       margin-top: 40px;
       margin-bottom: 16px;
+      color: var(--primary-color);
     }
 
     .blog-content h3 {
       font-size: 1.3rem;
       margin-top: 30px;
       margin-bottom: 12px;
+      color: var(--highlight-color);
     }
 
     .blog-content p {
@@ -159,7 +161,34 @@
       background-color: #f1f3f5;
       border-left: 4px solid var(--primary-color);
       font-style: italic;
-      color: var(--subtle-text);
+      color: var(--text-color);
+    }
+
+    .author-section {
+      margin-top: 40px;
+      padding: 24px;
+      background-color: #ffffff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+
+    .author-name {
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+    }
+    
+    .emphasis {
+      font-weight: 600;
+      color: var(--highlight-color);
+    }
+
+    .zehao-highlight {
+      background-color: rgba(93, 142, 247, 0.1);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: 600;
     }
 
     .blog-footer-nav {
@@ -253,21 +282,44 @@
 
   <!-- Blog Content -->
   <div class="blog-main">
-    <img src="https://images.unsplash.com/photo-1519791883288-dc8bd696e667?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Blog cover" class="blog-cover">
-    <h1 class="blog-title">AI Tools for Language Learners: Beyond FlexiRead</h1>
-    <div class="blog-date">April 5, 2025</div>
+    <img src="./blog3-cover.png" alt="Blog cover" class="blog-cover" style="max-height: 400px; object-fit: contain;">
+    <h1 class="blog-title">FlexiRead Project Reflection</h1>
+    <div class="blog-date">April 28, 2025</div>
 
     <div class="blog-content">
-      <p>Artificial intelligence is transforming the way we learn languages. In this article, we explore powerful AI tools that go beyond text adaptation and support learners in pronunciation, conversation, and writing.</p>
-      <h2>Speech Recognition and Feedback</h2>
-      <p>Apps like ELSA Speak use AI to analyze your pronunciation and give targeted feedback. This can dramatically improve spoken fluency over time.</p>
-      <h2>Chatbots and Language Practice</h2>
-      <p>Conversational AI bots simulate realistic dialogue, helping you practice natural language in a safe environment. Tools like ChatGPT and Duolingo's AI coach are becoming standard.</p>
+      <h2>Project Overview</h2>
+      <p>Over the past few months, we have been working on building our AI-powered English reading platform, designed to help ESL learners access reading materials tailored to their language proficiency. This project began with a reflection on the limitations of existing leveled reading systems, which often lack diversity and restrict learners from accessing more challenging content. In response, we developed a system that can assess the CEFR levels of articles provided by our users and adapt text difficulty to align with the learner's current stage, following the i+1 principle. We also introduced a CEFR-aligned vocabulary database as a knowledge base to guide text simplification and improve adaptation accuracy.</p>
+      
+      <p>Throughout the development process, sharing our progress in the Language & Technology Research Group sponsored by Dr. Erik Voss, presenting the platform at Tech Day, and communicating regularly with our project advisor, Dr. Jooeun Shim, provided valuable feedback and insights that helped us continuously refine and strengthen our approach.</p>
+      
+      <p>Today, our platform has completed its core functionality and is being polished for the final showcase as part of our Integrative Project. Although the project is not commercial at this stage, we are excited about its potential future directions and hope it can continue to support independent language learners beyond the classroom.</p>
+      
       <blockquote>
-        "AI bridges the gap between learners and fluent communication."
+        <!-- Reserved for Dr. Shim's testimonial -->
       </blockquote>
-      <h2>Writing Assistance</h2>
-      <p>Grammarly, DeepL Write, and similar tools provide real-time feedback on grammar, vocabulary, and tone—empowering learners to write more confidently.</p>
+
+      <div class="author-section">
+        <h2 class="author-name">Sijia's Reflection</h2>
+        <p>Building this platform has been a journey full of challenges and growth. Text simplification turned out to be more difficult than expected, often requiring multi-stage evaluation to avoid unintentionally increasing complexity. Exploring technical solutions also came with a steep learning curve: it was my first time working with LLMOps platforms like Dify, and learning to design robust AI workflows required continuous experimentation.</p>
+        
+        <p>To ensure LLMs produced the right type of output at different stages, we spent considerable time refining and modularizing our prompt designs. Balancing linguistic theory (such as i+1 and ZPD) with practical user experience also required constant attention.</p>
+        
+        <p>In the meantime, I'm especially grateful for the opportunity to work with Zehao—we both held ourselves to high standards, and Zehao's strong project management skills kept the project moving steadily. Working closely together, I not only learned from his organization and planning but also grew my own project management skills through the experience of pushing the project forward collaboratively.</p>
+      </div>
+
+      <div class="author-section">
+        <h2 class="author-name">Zehao's Reflection</h2>
+        <p>I was far from being a tech person when I began, and have come a long way to launch FlexiRead. I have some valuable takeaways from this journey that I would like to share with anyone reading this blog.</p>
+        
+        <h3>Important Lessons</h3>
+        <p><span class="zehao-highlight">DO NOT</span> overlook theories, even if you are designing a product rather than writing a paper. Admittedly, I initially thought this project could be completed through intuition alone—targeting problems I assumed existed and applying strategies I thought might work. In reality, theoretical foundations lay crucial groundwork and provide substantive answers when others inquire about your project.</p>
+        
+        <p><span class="zehao-highlight">DO NOT</span> be afraid to learn new things. Both Sijia and I continuously learned throughout this project. From natural language processing and linguistic metrics to large language models, website building, and publishing—every step was significant for us. Once you decide to learn, you will find that making the decision is the hardest part. Resources, tutorials, peers, faculty, and even AI can support you, so do not hesitate to begin.</p>
+        
+        <p>While I have shared several cautionary notes, I would also like to emphasize:</p>
+        
+        <p><span class="zehao-highlight">DO</span> have confidence in yourself and <span class="zehao-highlight">DO</span> trust your partner. I could not have completed this project without Sijia. We both feel grateful for our assiduous, persistent approach and commitment to constant learning. Initially, I was skeptical about the new IP format becoming a group project. Now, I am truly thankful for this opportunity—despite occasional arguments and moments of discouragement, we made it here together!</p>
+      </div>
     </div>
 
     <div class="blog-footer-nav">
