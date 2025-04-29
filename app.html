@@ -623,29 +623,35 @@
         throw new Error('Unable to extract content from the provided URL. Please try pasting the text directly.');
       }
     }
-    async function processText(text, cefrLevel) {
-      try {
-        const response = await fetch('/.netlify/functions/proxy', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            inputs: {
-              "CEFR": cefrLevel,
-              "enteredText": text
-            },
-            response_mode: "blocking",
-            user: userId
-          })
-        });
-        if (!response.ok) throw new Error(`API error: ${response.status}`);
-        const data = await response.json();
-        return data.data.outputs.text || data.data.outputs.result || JSON.stringify(data.data.outputs);
-      } catch (error) {
-        throw error;
-      }
-    }
+async function processText(text, cefrLevel) {
+  try {
+    const corsProxyUrl = 'https://corsproxy.io/?';
+    const apiUrl = 'https://api.dify.ai/v1/workflows/run';
+    
+    const response = await fetch(corsProxyUrl + encodeURIComponent(apiUrl), {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer app-lMTTgaZkDzOzeeDAhvaqLDj9',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        inputs: {
+          "CEFR": cefrLevel,
+          "enteredText": text
+        },
+        response_mode: "blocking",
+        user: userId
+      })
+    });
+    
+    if (!response.ok) throw new Error(`API error: ${response.status}`);
+    const data = await response.json();
+    return data.data.outputs.text || data.data.outputs.result || JSON.stringify(data.data.outputs);
+  } catch (error) {
+    console.error('Error details:', error);
+    throw error;
+  }
+}
 
     function showError(message) {
       errorMessage.textContent = message;
