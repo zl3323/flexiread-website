@@ -625,10 +625,9 @@
     }
     async function processText(text, cefrLevel) {
       try {
-        const response = await fetch('/api/v1/workflows/run', {
+        const response = await fetch('/.netlify/functions/proxy', {
           method: 'POST',
           headers: {
-            'Authorization': 'Bearer app-lMTTgaZkDzOzeeDAhvaqLDj9',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
