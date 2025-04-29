@@ -607,15 +607,6 @@
       const event = new Event('change');
       cefrSelect.dispatchEvent(event);
     }
-
-    function isValidUrl(string) {
-      try {
-        new URL(string);
-        return true;
-      } catch (_) {
-        return false;
-      }
-    }
     async function extractContentFromUrl(url) {
       try {
         const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
@@ -634,7 +625,7 @@
     }
     async function processText(text, cefrLevel) {
       try {
-        const response = await fetch('https://api.dify.ai/v1/workflows/run', {
+        const response = await fetch('/api/v1/workflows/run', {
           method: 'POST',
           headers: {
             'Authorization': 'Bearer app-lMTTgaZkDzOzeeDAhvaqLDj9',
@@ -687,19 +678,6 @@
       processButton.disabled = true;
       try {
         let contentToProcess = text;
-        if (isValidUrl(text)) {
-          try {
-            contentToProcess = await extractContentFromUrl(text);
-          } catch (urlError) {
-            showError(urlError.message);
-            loading.style.display = 'none';
-            document.getElementById('input-section').style.display = 'block';
-            processButton.disabled = false;
-            // Reset FAQ margin
-            faqSection.style.marginTop = '';
-            return;
-          }
-        }
         const adjustedText = await processText(contentToProcess, cefrLevel);
         // Fill and show results
         resultsContent.textContent = adjustedText;
