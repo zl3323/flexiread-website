@@ -625,13 +625,11 @@
     }
 async function processText(text, cefrLevel) {
   try {
-    const corsProxyUrl = 'https://corsproxy.io/?';
-    const apiUrl = 'https://api.dify.ai/v1/workflows/run';
+    const workerUrl = 'https://dify-proxy.zl3323.workers.dev/'; 
     
-    const response = await fetch(corsProxyUrl + encodeURIComponent(apiUrl), {
+    const response = await fetch(workerUrl, {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer app-lMTTgaZkDzOzeeDAhvaqLDj9',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
